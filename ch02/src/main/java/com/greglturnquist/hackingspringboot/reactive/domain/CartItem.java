@@ -2,15 +2,15 @@ package com.greglturnquist.hackingspringboot.reactive.domain;
 
 import java.util.Objects;
 
-public class CarItem {
+public class CartItem {
     private Item item;
     private int quantity;
 
-    private CarItem(){
+    private CartItem(){
 
     }
 
-    CarItem(Item item){
+    CartItem(Item item){
         this.item = item;
         this.quantity = 1;
     }
@@ -35,7 +35,7 @@ public class CarItem {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CarItem carItem = (CarItem) o;
+        CartItem carItem = (CartItem) o;
         return quantity == carItem.quantity && Objects.equals(item, carItem.item);
     }
 
@@ -44,5 +44,11 @@ public class CarItem {
         return Objects.hash(item, quantity);
     }
 
-    
+    @Override
+    public String toString() {
+        return "CarItem{" +
+                "item=" + item +
+                ", quantity=" + quantity +
+                '}';
+    }
 }
