@@ -42,7 +42,7 @@ public class HomeController {
                 .thenReturn("redirect:/");
     }
 
-    @GetMapping("/search")
+  /*  @GetMapping("/search")
     public Mono<Rendering> search(
             @RequestParam(required = false) String name,
             @RequestParam(required = false) String description,
@@ -55,5 +55,5 @@ public class HomeController {
                         this.cartRepository.findById("My Cart")
                                 .defaultIfEmpty(new Cart("My Cart")))
                 .build());
-    }
+    }*/
 }

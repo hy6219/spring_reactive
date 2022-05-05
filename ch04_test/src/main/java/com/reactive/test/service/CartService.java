@@ -21,13 +21,11 @@ public class CartService {
     private final ItemRepository itemRepository;
     private final CartRepository cartRepository;
     //평문형 연산 지원
-    private final ReactiveFluentMongoOperations fluentMongoOperations;
+/*    private final ReactiveFluentMongoOperations fluentMongoOperations;*/
 
-    public CartService(ItemRepository itemRepository, CartRepository cartRepository,
-                       ReactiveFluentMongoOperations fluentMongoOperations) {
+    public CartService(ItemRepository itemRepository, CartRepository cartRepository) {
         this.itemRepository = itemRepository;
         this.cartRepository = cartRepository;
-        this.fluentMongoOperations = fluentMongoOperations;
     }
 
     public Mono<Cart> addToCart(String cartId, String id) {
@@ -49,7 +47,7 @@ public class CartService {
                 .flatMap(this.cartRepository::save);
     }
 
-    public Flux<Item> searchByExample(String name, String description, boolean useAnd) {
+   /* public Flux<Item> searchByExample(String name, String description, boolean useAnd) {
         Item item = new Item(name, description, 0.0);
 
         //ctrl + alt + v
@@ -73,14 +71,14 @@ public class CartService {
         return fluentMongoOperations.query(Item.class)
                 .matching(Query.query(where("TV tray").is(name).and("Smurf").is(description)))
                 .all();
-        /*
+        *//*
         <=>
         (RDBMS) SELECT * FROM ITEM
         WHERE NAME = 'TV tray' and DESCRIPTION = 'Smurf';
         <=>
         (MONGO DB)
         {$and: [ {name:'TV tray'}, {description:'Smurf'}]}
-         */
+         *//*
     }
 
     Flux<Item> searchByFluentExample(String name, String description, boolean useAnd) {
@@ -96,5 +94,5 @@ public class CartService {
         return fluentMongoOperations.query(Item.class)
                 .matching(Query.query(byExample(Example.of(item, matcher))))
                 .all();
-    }
+    }*/
 }
